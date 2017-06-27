@@ -396,7 +396,6 @@ tbody tr:nth-child(odd) th {
 .bloghead {
   .bloghead-title {
     a {
-      margin-left: 2%;
     }
     span {
       font-weight: 900;
@@ -405,7 +404,6 @@ tbody tr:nth-child(odd) th {
   }
   .bloghead-nav {
     a {
-      margin-left: 2%;
       color: #000;
       font-weight: 700;
       &:hover {
@@ -426,16 +424,13 @@ tbody tr:nth-child(odd) th {
 
 .post-list {
   h2 {
-    margin-left: 2%;
     font-weight: 800;
     margin-top: 1.3rem;
   }
   p {
-    margin-left: 2%;
     font-weight: 700;
   }
   .post-date {
-    margin-left: 2%;
     font-weight: 600;
     font-size: medium;
   }
