@@ -407,15 +407,15 @@ tbody tr:nth-child(odd) th {
                 color: #626262;
             }
         }
-        //span {
-        //    font-weight: 800;
-        //    color: #EC407A;
-        //    &:hover,
-        //    &:focus {
-        //        color: #EC407A;
-        //        text-decoration: none;
-        //    }
-        //}
+        span {
+            font-weight: 800;
+            color: #000;
+            &:hover,
+            &:focus {
+                color: #626262;
+                text-decoration: none;
+            }
+        }
     }
 }
 
