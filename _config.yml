@@ -1,20 +1,20 @@
-name:               "Ink"
-description:        "A minimalistic jekyll theme for humans"
+name:               "Shie1d's Blog"
+description:        "一个丑比的技术日志"
 
 url:                ""
-author:             "thinker3197"
-email:              "jhondoe@abc.com"
+author:             "Shie1d Shen"
+email:              "shenli@kingsoft.com"
 gravatar_hash:      "205e460b479e2e5b48aec07710c08d50"
-twitter:            "jhondoe"
-email:              "jhondoe@abc.com"
-github:             "jhondoe"
-pinterest:          "jhondoe"
-linkedin:           "jhondoe"
-facebook:           "jhondoe"
+#twitter:            "jhondoe"
+email:              "shenli@kingsoft.com"
+github:             "ShieldShen"
+#pinterest:          "jhondoe"
+#linkedin:           "jhondoe"
+#facebook:           "jhondoe"
 
-disqus_shortname:   "thinker3197"
+disqus_shortname:   "Shie1d"
 
-background:         "http://apple.wallpapersfine.com/wallpapers/original/1242x2208/w-5273.jpg"
+background:         "/resources/img/bg.jpg"
 
 paginate:           5
 paginate_path:      "/page:num/"
