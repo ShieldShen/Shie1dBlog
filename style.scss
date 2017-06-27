@@ -335,6 +335,9 @@ tbody tr:nth-child(odd) th {
     margin-left: 25vw;
     height: auto;
     width: 100%;
+    a {
+      margin-left: 0;
+    }
   }
   @media (min-width: 38em) {
     position: fixed;
