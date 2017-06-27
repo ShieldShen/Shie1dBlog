@@ -294,13 +294,13 @@ tbody tr:nth-child(odd) th {
         padding-left: 9px;
         padding-right: 9px;
         text-align: center;
-        border: 2px #EC407A solid;
-        color: #EC407A;
+        border: 2px #777 solid;
+        color: #777;
         &:hover,
         &:focus {
             color: #fff;
             border-color: #fff;
-            background: #EC407A;
+            background: #222;
         }
     }
 }
@@ -336,6 +336,9 @@ tbody tr:nth-child(odd) th {
         margin-left: 25vw;
         height: auto;
         width: 100%;
+    }
+    .github {
+        align-content: center;
     }
     @media (min-width: 38em) {
         position: fixed;
@@ -393,9 +396,11 @@ tbody tr:nth-child(odd) th {
 
 .bloghead {
     .bloghead-title {
+        a {
+            margin-left: 4%;
+        }
         span {
             font-weight: 900;
-            margin-left: 2%;
             color: #BDBDBD;
         }
     }
@@ -421,12 +426,15 @@ tbody tr:nth-child(odd) th {
 
 .post-list {
     h2 {
-        margin-left: 1%;
+        margin-left: 2%;
         font-weight: 800;
         margin-top: 1.3rem;
     }
     p {
         font-weight: 700;
+    }
+    time {
+        align-content: flex-end;
     }
 }
 
