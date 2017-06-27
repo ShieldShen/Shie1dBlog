@@ -337,9 +337,9 @@ tbody tr:nth-child(odd) th {
   //  height: auto;
   //  width: 100%;
   //}
-  .github {
-    align-content: center;
-  }
+  //.github {
+  //  align-content: center;
+  //}
   @media (min-width: 38em) {
     position: fixed;
     width: 20%;
@@ -372,8 +372,8 @@ tbody tr:nth-child(odd) th {
       bottom: 0;
       margin-left: 2vw;
       margin-top: 5%;
+      align-content: center;
       a {
-        align-content: center;
         padding: 0;
         margin-left: 0;
       }
