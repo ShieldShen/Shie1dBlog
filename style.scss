@@ -45,12 +45,12 @@ body {
 }
 
 a {
-    color: #515151;
+    color: #111;
     text-decoration: none;
     transition: all 0.3s;
     &:hover,
     &:focus {
-        color: #EC407A;
+        color: #626262;
         text-decoration: dotted;
     }
 }
@@ -394,32 +394,39 @@ tbody tr:nth-child(odd) th {
 .bloghead {
     .bloghead-title {
         span {
+            font-weight: 900;
+            margin-left: 2%;
             color: #BDBDBD;
         }
     }
     .bloghead-nav {
         a {
             color: #000;
-            font-weight: 800;
+            font-weight: 700;
             &:hover {
-                color: #424242;
+                color: #626262;
             }
         }
-        span {
-            font-weight: 800;
-            color: #EC407A;
-            &:hover,
-            &:focus {
-                color: #EC407A;
-                text-decoration: none;
-            }
-        }
+        //span {
+        //    font-weight: 800;
+        //    color: #EC407A;
+        //    &:hover,
+        //    &:focus {
+        //        color: #EC407A;
+        //        text-decoration: none;
+        //    }
+        //}
     }
 }
 
 .post-list {
     h2 {
+        margin-left: 1%;
+        font-weight: 800;
         margin-top: 1.3rem;
+    }
+    p {
+        font-weight: 700;
     }
 }
 

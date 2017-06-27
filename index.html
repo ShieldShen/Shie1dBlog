@@ -7,7 +7,9 @@ layout: default
     </h1>
     <nav class="bloghead-nav">
         {% for nav in site.nav %}
-        <a href="{{ nav.href }}">{{ nav.name }}<span> &nbsp;/&nbsp; </span></a> {% endfor %}
+        <a href="{{ nav.href }}">{{ nav.name }}</a>
+        <!--<span> &nbsp;/&nbsp; </span>-->
+        {% endfor %}
     </nav>
 </header>
 <div class="content">
