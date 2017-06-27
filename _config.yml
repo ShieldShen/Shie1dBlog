@@ -27,8 +27,8 @@ markdown:           kramdown
 nav:
   - name:           "About"
     href:           "/about"
-  - name:           "Download"
-    href:           "/releases"
+#  - name:           "Download"
+#    href:           "/releases"
 
 sass:
   style:            :compressed
