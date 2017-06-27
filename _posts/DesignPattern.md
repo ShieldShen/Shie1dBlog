@@ -1,8 +1,9 @@
 ---
-title:        "Sample Post"
-description:  "A short description of the page's content"
+title:        "设计模式—原型模式"
+description:  "用来测试用来测试用来测试用来测试用来测试用来测试用来测试用来测试用来测试用来测试"
 image:        "http://placehold.it/400x200"
-author:       "Jhonathan"
+author:       "Shie1d Shen"
+date:         "2017-06-27"
 ---
 
 #原型模式
