@@ -17,7 +17,7 @@ date:         "2017-06-28"
 ### 第二步
 创建一个新的仓库，因为GitHub Pages要求是`master`分支或者`gh-pages`分支再或者`master`分支上的`/docs`。我这里默认大家都是新建的仓库，想要其他方式戳右边，[怎么配置GitHub Pages](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/)。
 点击创建
-![](../resources/img-post/build_blog_1.png)
+![](/resources/img-post/build_blog_1.png)
 名字随便，`README`这个也是随便勾不勾，但是吧，作为一个开发人员，这个东西就是用来给第一次看到这个仓库的人介绍这个仓库是干啥用的，所以，写上是个好习惯~~ 
 ![](../resources/img-post/build_blog_2.png)
 ### 第三步
