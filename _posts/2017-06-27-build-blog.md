@@ -3,7 +3,7 @@ title:        "怎么用GitHub Pages构筑个人博客"
 description:  "个人域名+GitHub+静态网页模板快速搭建个人博客"
 image:        "http://placehold.it/400x200"
 author:       "Shie1d Shen"
-date:         "2017-06-28"
+date:         "2017-06-27"
 ---
 # 为什么用GitHub Pages
 博主舍不得租服务器的钱，又想弄一个风格相对自由化的博客界面，而像CSDN这些博客虽然被人用了很多年，相对很稳定，但是吧，界面大家都是统一的。。而博主...就是想折腾一下。
