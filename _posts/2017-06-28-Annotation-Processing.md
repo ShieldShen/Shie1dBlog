@@ -128,7 +128,7 @@ public class Tiramisu implements Meal {
 }
 ```
 工厂是这个样子:
-```java :n
+```
 public class PizzaStore {
 
   public Meal order(String mealName) {
@@ -157,7 +157,7 @@ public class PizzaStore {
 
 ### @Factory 注解
 首先我们要定义一个注解，用它来标识哪个类被用于工厂模式。
-```java : n
+```
 @Target(ElementType.TYPE) 
 @Retention(RetentionPolicy.CLASS)
 public @interface Factory {
@@ -174,7 +174,7 @@ public @interface Factory {
 }
 ```
 作用目标是类，编译时可见。`type`表示这个类属于啥，这里就是Meal，`id`就是用于工厂创建时创建这个类的id。这个注解定义好了以后，开始用起来
-```java:n
+```
 @Factory(
     id = "Margherita",
     type = Meal.class
@@ -187,7 +187,7 @@ public class MargheritaPizza implements Meal {
 }
 ```
 
-```java:n
+```
 @Factory(
     id = "Calzone",
     type = Meal.class
@@ -200,7 +200,7 @@ public class CalzonePizza implements Meal {
 }
 ```
 
-```java:n
+```
 @Factory(
     id = "Tiramisu",
     type = Meal.class
@@ -222,7 +222,7 @@ public class Tiramisu implements Meal {
 原作者是号称手把手教学，hiahia。
 
 首先，除了最主要的`process()`方法，其他方法大概这个样子：
-```java:n
+```
 @AutoService(Processor.class)
 public class FactoryProcessor extends AbstractProcessor {
 
@@ -268,7 +268,7 @@ public class FactoryProcessor extends AbstractProcessor {
 * **Filer**：可以用来生成文件。
 
 一个类里面可以分成好几种`Element`。从另一个方面讲，`Element`代表了像`package`,`class`,`method`,`field`等，每个元素代表一个静态的语言级的机构。
-``` java :n
+```
 package com.example;	// PackageElement
 
 public class Foo {		// TypeElement
@@ -286,7 +286,7 @@ public class Foo {		// TypeElement
 在处理被注解的元素的时候，你要把这些元素看成结构化的文本，而结构化的文本是可以上下检索的。
 
 例如上面的`Foo`类是一个`TypeElement`，我们可以检索它的子元素：
-```java:n
+```
 TypeElement fooClass = ... ;
 for (Element e : fooClass.getEnclosedElements()){ // iterate over children
 	Element parent = e.getEnclosingElement();  // parent == fooClass
@@ -295,7 +295,7 @@ for (Element e : fooClass.getEnclosedElements()){ // iterate over children
 如上所述的，  `Elements`其实就是表示的注解作用的代码。`TypeElement`表示的就是代码中`类`。然而，`TypeElement`并不含有这个类确切的信息，在`TypeElement`中你可以获得这个类的名字，但是拿不到诸如父类等信息。但是一个类的父类这些信息，可以通过`TypeMirror`来获取，而获取一个`Element`的`TypeMirror`你可以通过调用`element.asType()`方法获取。
 ### process方法
 #### 获取被@Factory注解了的类
-```java:n
+```
   @Override
   public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
 
@@ -306,7 +306,7 @@ for (Element e : fooClass.getEnclosedElements()){ // iterate over children
   }
 ```
 这里`RoundEnvironment#getElementsAnnotatedWith(Class)`就是获取一个被相应注解注解了的类元素列表，获取了元素，我们需要按照前面我们设定的一些规定去校验我们的注解是否注解在了正确的元素上。
-```java:n
+```
 @Override
   public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
     for (Element annotatedElement : roundEnv.getElementsAnnotatedWith(Factory.class)) {
@@ -323,7 +323,7 @@ for (Element e : fooClass.getEnclosedElements()){ // iterate over children
 在`init()`方法中我们获取了一个`Messager`对象。这个对象就是用来在注解处理器中打印各种信息的。其实这个是用来打印一些信息给使用者看得，让他们知道使用错误在哪里，但是这个被用在开发中做debug用也可以。打印的消息有几种，[官方文档](http://docs.oracle.com/javase/7/docs/api/javax/tools/Diagnostic.Kind.html)，其中最重要的是`Kind.ERROR`，因为这种类型的消息可以用来指示我们的注解处理器在哪里失败了。有的时候注解处理器的使用者错误的使用了注解，这个时候如果我们把异常抛出去就会导致运行处理器的jvm终止，并且给使用者丢出一些难以理解的log。总而言之，善于用好Message可以让你的注解处理器的易用性大大提升。
 #### 回到process()方法中
 使用Messager做错误打印
-```java:n
+```
 public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
 
     for (Element annotatedElement : roundEnv.getElementsAnnotatedWith(Factory.class)) {
@@ -349,7 +349,7 @@ private void error(Element e, String msg, Object... args) {
 在我们通过注解进行相关操作前，我们得根据之前的规定来对数据进行一些校验。值得一提的是，注解处理器本身就是一个java应用，我们一般用在项目中的编程方法一样可以用在注解处理器程序中。
 
 尽管我们的注解处理器是一个简单的程序，但并不妨碍我们按照面向对象编程思想去编程。我们使用`FactoryAnnotatedClass`这个对象来记录被注解的类的信息。
-```java:n
+```
 public class FactoryAnnotatedClass {
 
   private TypeElement annotatedClassElement;
@@ -417,7 +417,7 @@ public class FactoryAnnotatedClass {
 }
 ```
 其中，需要着重关注的几行代码:
-```java:n
+```
 Factory annotation = classElement.getAnnotation(Factory.class);
 id = annotation.id(); // Read the id value (like "Calzone" or "Tiramisu")
 
@@ -432,7 +432,7 @@ if (StringUtils.isEmpty(id)) {
 2. 我们可以在处理器中统一处理错误。
 
 接下来，我们获取了`@Factory`的type字段，并且获取了type的相关信息
-```java:n
+```
  try {
       Class<?> clazz = annotation.type();
       qualifiedGroupClassName = clazz.getCanonicalName();
@@ -449,7 +449,7 @@ if (StringUtils.isEmpty(id)) {
 2. 这个类还没有被编译：在这种情况下，我们的源码还没有编译，而我们直接去获取Class对象是获取不到的，会抛出`MirroredTypeException`。但是在`MirroredTypeException`中，包含了一个TypeMirror对象，从这个对象里面，我们也可以获取相关信息，就像上面catch代码块里的
 
 现在我们再定义一个类`FactoryGroupedClasses`，用这个类去记录所有的`FactoryAnnotatedClass`。因为我们的注解处理器可能会生成好多种工厂类，所以用一个`FactoryGroupedClasses`去记录一个工厂里要生成的类。
-```java:n
+```
 public class FactoryGroupedClasses {
 
   private String qualifiedClassName;
@@ -480,7 +480,7 @@ public class FactoryGroupedClasses {
 
 #### 数据校验
 根据我们写代码之前的预设规则来校验数据。
-```java:n
+```
 public class FactoryProcessor extends AbstractProcessor {
 
   @Override
@@ -590,7 +590,7 @@ public class FactoryProcessor extends AbstractProcessor {
 如果这些条件都满足，我们就可以继续往下走，不然打印信息。
 #### 给注解的类按照Type分类
 在校验数据合格过后，我们需要把生成的`FactoryAnnotatedClass`放到相应的`FactoryGroupedClasses`中：
-```java:n
+```
  public class FactoryProcessor extends AbstractProcessor {
 
    private Map<String, FactoryGroupedClasses> factoryClasses =
@@ -642,7 +642,7 @@ public class FactoryProcessor extends AbstractProcessor {
 ```
 #### 代码生成
 在我们收集了所有的有@Factory注解的信息过后，我们可以给每个factory生成代码:
-```java:n
+```
 @Override
 public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
 
@@ -660,7 +660,7 @@ public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment 
 }
 ```
 写.java文件和写其他文件一样，我们使用`Filer`中提供的Writer来，而写java代码，使用`JavaPoet`或者`JavaWriter`就可以很轻松的办到啦。
-```java:n
+```
 public class FactoryGroupedClasses {
 
   /**
@@ -719,7 +719,7 @@ public class FactoryGroupedClasses {
 ```
 #### 处理器process重复调用
 一个处理器的process方法一般会重复调用好几次，因为在第一次运行的时候会生成一些文件，而在编译这些生成的文件前还会去运行处理器，而这重复调用的过程中，同一个处理器始终只有一个对象，而处理器的process方法会反复调用。由于对象没有释放，我们需要去清空上次已经处理过的`FactoryGroupedClasses`
-```java:n
+```
 @Override
 public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
 	try {
