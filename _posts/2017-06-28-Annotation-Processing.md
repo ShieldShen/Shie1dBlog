@@ -590,6 +590,7 @@ public class FactoryProcessor extends AbstractProcessor {
 如果这些条件都满足，我们就可以继续往下走，不然打印信息。
 #### 给注解的类按照Type分类
 在校验数据合格过后，我们需要把生成的`FactoryAnnotatedClass`放到相应的`FactoryGroupedClasses`中：
+
 ```java
  public class FactoryProcessor extends AbstractProcessor {
 
@@ -640,6 +641,7 @@ public class FactoryProcessor extends AbstractProcessor {
     ...
  }
 ```
+
 #### 代码生成
 在我们收集了所有的有@Factory注解的信息过后，我们可以给每个factory生成代码:
 ```java
@@ -659,7 +661,9 @@ public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment 
     return true;
 }
 ```
+
 写.java文件和写其他文件一样，我们使用`Filer`中提供的Writer来，而写java代码，使用`JavaPoet`或者`JavaWriter`就可以很轻松的办到啦。
+
 ```java
 public class FactoryGroupedClasses {
 
@@ -717,8 +721,10 @@ public class FactoryGroupedClasses {
   }
 }
 ```
+
 #### 处理器process重复调用
 一个处理器的process方法一般会重复调用好几次，因为在第一次运行的时候会生成一些文件，而在编译这些生成的文件前还会去运行处理器，而这重复调用的过程中，同一个处理器始终只有一个对象，而处理器的process方法会反复调用。由于对象没有释放，我们需要去清空上次已经处理过的`FactoryGroupedClasses`
+
 ```java
 @Override
 public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
@@ -738,6 +744,7 @@ public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment 
 	return true;
 }
 ```
+
 关于这个问题的解决办法其实很多，在这里我们使用这个方式，你只要知道注解处理器可能会运行多次就可以了，这样在出现问题的时候知道怎么处理~
 #### 处理器代码与工程代码分离
 因为处理器的代码是不需要进入工程的，我们需要的最多也是处理器生成的代码，所以可以把处理器代码分开成单独module且不编译进最终的jar或者apk。
