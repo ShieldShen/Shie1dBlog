@@ -34,7 +34,7 @@ JavaPoet用来写java源文件不要太easy....
 注解处理器是一个用来在编译时扫描处理注解的javac工具。我们可以给指定的注解注册相应的注解处理器。在注解处理器里面，你可以根据注册的相应的注解来做相应的处理，我们这里会去生成一些`.java`文件，并使用这些生成的文件实现一个工厂方法。
 ### AbstractProcessor
 `AbstractProcessor`是实现注解处理器必须要继承的类，一般来说需要实现里面的四个方法
-```java : n
+```java
 package com.example;
 
 public class MyProcessor extends AbstractProcessor {
@@ -60,7 +60,7 @@ public class MyProcessor extends AbstractProcessor {
 
 在`Java 7`以上版本里面，我们可以使用注解来代替`getSupportedAnnotationTypes()`,`getSupportedSourceVersion()`：
 
-```java : n
+```java
 @SupportedSourceVersion(SourceVersion.latestSupported())
 @SupportedAnnotationTypes({
    // Set of full qullified annotation type names
@@ -101,7 +101,7 @@ net.blabla.SpecialProcessor
 当然，这个例子原作者也说了，没什么实际的卵用，而且使用注解处理器的大部分需求不是简单的一两行代码可以实现，这里的例子就是个例子~~~这里会使用处理器来实现一个简单工厂模式的代码生成。
 那么，需求来了：一个披萨店，提供两种披萨，披萨A披萨B~~还有一个点心T。
 一般来说，我们的代码可以这样写：
-```java : n
+```java
 public interface Meal {
   public float getPrice();
 }
