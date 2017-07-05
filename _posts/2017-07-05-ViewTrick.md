@@ -14,6 +14,8 @@ date:         "2017-07-05"
 但是，不可否认的是，ButterKnife确实是使用特别多，而且也是使用Annotation Processor的经典学习框架。所以，这里我们去模仿ButterKnife打造一个自己的View注解框架。当然我们的这个框架只是学习为主，并不推荐用到项目中去。
 
 而关于Annotation Processor的内容，送你电梯[注解处理器](/_post/2017-06-28-Annotation-Processing)
+
+而这篇文章对应的项目戳这里[ViewTrick-Project](https://github.com/ShieldShen/ViewTrick-Project)
 ## 关于框架的结构
 含有Annotation Processor的部分，我们不需要把他编译到代码里面去，所以作为一个单独的模块拿出来。而功能的使用，ViewTrick模块，作为一个面向三方的模块独立出来。而前面说的两个模块都要用到相同的注解，所以注解也会放在一个单独的模块当中。
 ![](/resources/img-post/viewtrick/viewtrick_1.png)
@@ -276,6 +278,8 @@ TypeSpec typeSpec = TypeSpec.classBuilder(clzName + "$$ViewBinder")
 
 ### 最后
 其实博主很懒，所以没有写代码的详细说明。这个文章主要说明的是这种注入框架的思路，而注解处理的原理也可以电梯去看。而且这个demo只能作为学习哦，用到项目里面出现的各种问题，我表示#￥@%@#
+
+对应的项目戳这里[ViewTrick-Project](https://github.com/ShieldShen/ViewTrick-Project)
 
 
 
