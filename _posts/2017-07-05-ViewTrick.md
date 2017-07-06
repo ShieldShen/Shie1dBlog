@@ -13,7 +13,7 @@ date:         "2017-07-05"
 
 但是，不可否认的是，ButterKnife确实是使用特别多，而且也是使用Annotation Processor的经典学习框架。所以，这里我们去模仿ButterKnife打造一个自己的View注解框架。当然我们的这个框架只是学习为主，并不推荐用到项目中去。
 
-而关于Annotation Processor的内容，送你电梯[注解处理器](/_post/2017-06-28-Annotation-Processing)
+而关于Annotation Processor的内容，送你电梯[注解处理器](http://www.shie1d.com/2017/06/28/Annotation-Processing/)
 
 而这篇文章对应的项目戳这里[ViewTrick-Project](https://github.com/ShieldShen/ViewTrick-Project)
 ## 关于框架的结构
@@ -26,7 +26,7 @@ date:         "2017-07-05"
     compile project(':viewtrick')
 ```
 
-而apt的使用也在[注解处理器](/_post/2017-06-28-Annotation-Processing)有介绍
+而apt的使用也在[注解处理器](http://www.shie1d.com/2017/06/28/Annotation-Processing/)有介绍
 ## 功能实现的大概思路
 我们需要给View字段注入，一般的流程是使用`View#findViewById(int)`来从视图树中获取。所以，我们需要使用者给我们提供我们要注入的View字段的**Id**以及这个View所属的**视图树**。
 
@@ -215,7 +215,7 @@ public class BindViewContainer {
 其中`containerName`表示包含被注解字段的类的全路径名，`boundFields`记录这个类里面包含的所有被注解的字段。
 
 #### 校验代码
-这里是根据之前的规定写的校验字段是否符合要求的，代码在仓库里有，所以这里不做讲述，api的学习请到[注解处理器](/_post/2017-06-28-Annotation-Processing)。
+这里是根据之前的规定写的校验字段是否符合要求的，代码在仓库里有，所以这里不做讲述，api的学习请到[注解处理器](http://www.shie1d.com/2017/06/28/Annotation-Processing/)。
 
 #### 其中一些关键代码的介绍
 ##### 通过注解的VariableElement获取字段的类型元素
