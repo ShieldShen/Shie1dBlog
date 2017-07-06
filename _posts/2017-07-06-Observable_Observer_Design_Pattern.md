@@ -24,6 +24,7 @@ date:         "2017-07-05"
 ## 实现机制
 **观察者模式描述了如何建立对象与对象之间的依赖关系，以及如何构造满足这种需求的系统。**观察者模式包含观察目标和观察者两类对象，一个目标可以有任意数目的与之相依赖的观察者，一旦观察目标的状态发生改变，所有的观察者都将得到通知。作为对这个通知的响应，每个观察者都将监视观察目标的状态以使其状态与目标状态同步，这种交互也称为发布-订阅（Publish-Subscribe）。观察目标是通知的发布者，它发出通知时并不需要知道谁是它的观察者，可以有任意数目的观察者订阅它并接收通知。
 下面通过示意代码来对该模式进行进一步分析。首先我们定义一个抽象目标 Subject，典型代码如下所示：
+
 ```java
 import java.util.*;
 abstract class Subject {
@@ -44,7 +45,9 @@ protected ArrayList observers<Observer> = new ArrayList();
     public abstract void notify();
 }
 ```
+
 具体目标类ConcreteSubject是实现了抽象目标类Subject的一个具体子类，其典型代码如下所示：
+
 ```java
 class ConcreteSubject extends Subject {
     //实现通知方法
@@ -56,7 +59,9 @@ class ConcreteSubject extends Subject {
     }   
 }
 ```
+
 在具体观察者 ConcreteObserver 中实现了update()方法，其典型代码如下所示：
+
 ```java
 class ConcreteObserver implements Observer {
     //实现响应方法
@@ -65,11 +70,13 @@ class ConcreteObserver implements Observer {
     }
 }
 ```
+
 在有些更加复杂的情况下，**具体观察者类 ConcreteObserver 的 update() 方法在执行时需要使用到具体目标类ConcreteSubject中的状态（属性）**，因此在 ConcreteObserver 与 ConcreteSubject 之间有时候还存在关联或依赖关系，在 ConcreteObserver 中定义一个 ConcreteSubject 实例，通过该实例获取存储在 ConcreteSubject 中的状态。如果 ConcreteObserver 的 update() 方法不需要使用到 ConcreteSubject 中的状态属性，则可以对观察者模式的标准结构进行简化，在具体观察者 ConcreteObserver 和具体目标 ConcreteSubject 之间无须维持对象引用。如果在具体层具有关联关系，系统的扩展性将受到一定的影响，增加新的具体目标类有时候需要修改原有观察者的代码，在一定程度上违反了“开闭原则”，但是如果原有观察者类无须关联新增的具体目标，则系统扩展性不受影响。
 ## Example
 为了实现对象之间的联动，Sunny 软件公司开发人员决定使用观察者模式来进行多人联机对战游戏的设计，其基本结构如图所示：
 ![多人联机对战游戏结构图](http://wiki.jikexueyuan.com/project/design-pattern-behavior/images/1341503929_8319.jpg "多人联机对战游戏结构图")
 在图中，AllyControlCenter 充当目标类，ConcreteAllyControlCenter 充当具体目标类，Observer 充当抽象观察者，Player 充当具体观察者。完整代码如下所示：
+
 ```java
 import java.util.*;
 
@@ -158,7 +165,9 @@ class ConcreteAllyControlCenter extends AllyControlCenter {
     }
 }
 ```
+
 编写如下客户端测试代码：
+
 ```java
 class Client {
     public static void main(String args[]) {
@@ -186,7 +195,9 @@ AllyControlCenter acc;
     }
 }
 ```
+
 编译并运行程序，输出结果如下：
+
 ```
 金庸群侠战队组建成功！
 ----------------------------
@@ -200,10 +211,13 @@ AllyControlCenter acc;
 坚持住，张无忌来救你！
 坚持住，段誉来救你！
 ```
+
 在本实例中，实现了两次对象之间的联动，当一个游戏玩家 Player 对象的 beAttacked() 方法被调用时，将调用 AllyControlCenter 的 notifyObserver() 方法来进行处理，而在 notifyObserver() 方法中又将调用其他 Player 对象的 help() 方法。Player 的beAttacked()方法、AllyControlCenter 的 notifyObserver() 方法以及 Player 的 help() 方法构成了一个联动触发链，执行顺序如下所示：
+
 ```
 Player.beAttacked() --> AllyControlCenter.notifyObserver() -->Player.help()。
 ```
+
 ### JDK 对观察者模式的支持
 观察者模式在 Java 语言中的地位非常重要。在 JDK 的 java.util 包中，提供了 Observable 类以及 Observer 接口，它们构成了 JDK 对观察者模式的支持。如图所示：
 ![JDK提供的Observable类及Observer接口结构图](http://wiki.jikexueyuan.com/project/design-pattern-behavior/images/1341504430_1842.jpg "JDK提供的Observable类及Observer接口结构图")
